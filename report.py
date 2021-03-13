@@ -100,8 +100,8 @@ INDICADORES = [
 ]
 
 
-def query_api(indicador, estado):
-    URL = BASE_URL + f"indicator={indicador}&type=daily&country=Brazil&daterange=20200101-20210309&region={estado}"
+def query_api(indicador, estado, deadline):
+    URL = BASE_URL + f"indicator={indicador}&type=daily&country=Brazil&daterange=20200101-{deadline}&region={estado}"
     data = requests.get(URL)
     jsonobj = json.loads(data.text)
     df_e = pd.json_normalize(jsonobj['data'])
@@ -155,14 +155,11 @@ if INDICADOR not in INDICADORES:
     raise Exception(f"Indicador {INDICADOR} inválido. Por favor, consulte a lista de indicadores.")
 
 print(f"Processando {ESTADOS_LIST[0]}")
-df = query_api(INDICADOR, ESTADOS_LIST[0])
+today = datetime.today().strftime('%Y%m%d')
+df = query_api(INDICADOR, ESTADOS_LIST[0], today)
 for estado in ESTADOS_LIST[1:]:
     print(f"Processando {estado}")
-    today = datetime.today().strftime('%Y%m%d')
-    URL = BASE_URL + f"indicator={INDICADOR}&type=daily&country=Brazil&daterange=20200101-{today}&region={estado}"
-    data = requests.get(URL)
-    jsonobj = json.loads(data.text)
-    df_e = query_api(INDICADOR, estado)
+    df_e = query_api(INDICADOR, estado, today)
     df = pd.concat([df, df_e], axis=0)
 
 df.sort_values(by='survey_date', inplace=True)
