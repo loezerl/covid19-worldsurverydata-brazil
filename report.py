@@ -55,12 +55,26 @@ ESTADOS_MAP = {
 }
 
 INDICADORES = [
+    ## Sintomas
     'covid',
     'flu',
+    'anosmia', 
+    'cmty_covid', 
+    ############
+    ## Comportamento
     'mask',
     'contact',
+    'work_outside_home_1d',
+    'shop_1d',
+    'restaurant_1d',
+    'spent_time_1d',
+    'large_event_1d',
+    'public_transit_1d',
+    ###############
+    ## Economico
     'finance',
-    'anosmia',
+    #############
+    ## Vacina
     'vaccine_acpt',
     'covid_vaccine',
     'trust_fam',
@@ -72,10 +86,6 @@ INDICADORES = [
     'concerned_sideeffects',
     'hesitant_sideeffects',
     'modified_acceptance',
-    'access_wash',
-    'wash_hands_24h_3to6',
-    'wash_hands_24h_7orMore',
-    'cmty_covid',
     'barrier_reason_side_effects',
     'barrier_reason_wontwork',
     'barrier_reason_dontbelieve',
@@ -97,6 +107,18 @@ INDICADORES = [
     'informed_access',
     'appointment_have',
     'appointment_tried',
+    #################
+    ## Saude mental
+    'anxious_7d',
+    'depressed_7d',
+    'worried_become_ill',
+    'food_security',
+    ## Outros
+    'access_wash',
+    'wash_hands_24h_3to6',
+    'wash_hands_24h_7orMore',
+    #################
+    
 ]
 
 
