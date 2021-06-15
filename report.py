@@ -61,6 +61,9 @@ INDICADORES = [
     'anosmia', 
     'cmty_covid', 
     ############
+    ## Sintomas pós-atualizacao do indicador covid
+    'cli_w11',
+    'ili_w11',
     ## Comportamento
     'mask',
     'contact',
